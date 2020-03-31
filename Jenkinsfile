@@ -47,11 +47,9 @@ pipeline {
                 milestone(1)
                 kubernetesDeploy(
                     kubeconfigId: 'kubeconfig',
+                    configs: 'train-schedule-kube.yaml'
                     enableConfigSubstitution: true
                     )
-                {
-                   sh "kubectl get pods --all-namespaces"
-                }
                 //implement Kubernetes deployment here
             }
         }
