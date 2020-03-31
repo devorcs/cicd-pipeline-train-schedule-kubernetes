@@ -45,6 +45,13 @@ pipeline {
             steps {
                 input 'Deploy to Production?'
                 milestone(1)
+                kubernetesDeploy(
+                    kubeconfigID: 'kubeconfig',
+                    enableConfigSubstitution: true
+                    )
+                {
+                   sh "kubectl get pods --all-namespaces"
+                }
                 //implement Kubernetes deployment here
             }
         }
